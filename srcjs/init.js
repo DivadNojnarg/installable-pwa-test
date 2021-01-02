@@ -58,19 +58,18 @@ $( document ).ready(function() {
     $('#install-button').on('click', function() {
       // close install toast
       installToast.close();
-      const promptEvent = deferredPrompt;
-      if (!promptEvent) {
+      if (!deferredPrompt) {
         // The deferred prompt isn't available.
         return;
       }
       // Show the install prompt.
-      promptEvent.prompt();
+      deferredPrompt.prompt();
       // Log the result
-      promptEvent.userChoice.then((result) => {
+      deferredPrompt.userChoice.then((result) => {
         console.log('👍', 'userChoice', result);
         // Reset the deferred prompt variable, since
         // prompt() can only be called once.
-        window.deferredPrompt = null;
+        deferredPrompt = null;
       });
     });
   }, 500);
