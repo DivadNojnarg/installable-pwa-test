@@ -40,12 +40,13 @@ $( document ).ready(function() {
     text: '<button id="install-button" class="toast-button button color-green">Install</button>',
   });
 
+  var deferredPrompt;
   // Handle install event
   $(window).on('beforeinstallprompt', (e) => {
     // Prevent Chrome 67 and earlier from automatically showing the prompt
-      e.preventDefault();
+    e.preventDefault();
     // Stash the event so it can be triggered later.
-    window.deferredPrompt = e;
+    deferredPrompt = e;
     // Show install trigger
     installToast.open();
   });
@@ -57,7 +58,7 @@ $( document ).ready(function() {
     $('#install-button').on('click', function() {
       // close install toast
       installToast.close();
-      const promptEvent = window.deferredPrompt;
+      const promptEvent = deferredPrompt;
       if (!promptEvent) {
         // The deferred prompt isn't available.
         return;
