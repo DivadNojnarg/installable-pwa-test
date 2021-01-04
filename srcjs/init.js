@@ -30,7 +30,8 @@ $( document ).ready(function() {
       }
     },
     serviceWorker: {
-      path: 'service-worker.js'
+      path: 'service-worker.js',
+      scope: window.location.pathname
     },
   });
 
