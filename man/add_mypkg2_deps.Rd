@@ -10,5 +10,5 @@ add_mypkg2_deps(tag)
 \item{tag}{Element to attach the dependencies.}
 }
 \description{
-This function attaches mypkg2. dependencies to the given tag
+This function attaches mypkg2 dependencies to the given tag
 }
