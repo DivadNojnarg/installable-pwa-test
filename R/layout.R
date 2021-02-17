@@ -1,5 +1,5 @@
 #' @export
-f7_page <- function(..., navbar, toolbar, title = NULL, options = NULL) {
+f7_page <- function(..., navbar, toolbar, title = NULL, options = NULL, allowPWA = TRUE) {
 
   config_tag <- tags$script(
     type = "application/json",
@@ -13,6 +13,7 @@ f7_page <- function(..., navbar, toolbar, title = NULL, options = NULL) {
 
   # create body_tag
   body_tag <- tags$body(
+    `data-pwa` = tolower(allowPWA),
     tags$div(
       id = "app",
       tags$div(

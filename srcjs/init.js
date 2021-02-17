@@ -16,11 +16,15 @@ $( document ).ready(function() {
     }
   };
 
-  // Service worker registration
-  //config.serviceWorker = {
-  //    path: window.location.pathname + 'service-worker.js',
-  //    scope: window.location.pathname
-  //};
+  // check if the app is intended to be a PWA
+  var isPWA = $('body').attr('data-pwa') === "true";
+
+  if (isPWA) {
+    config.serviceWorker = {
+      path: window.location.pathname + "service-worker.js",
+      scope: window.location.pathname
+    };
+  }
 
   // Widgets cache
   config.data = function() {
@@ -31,7 +35,7 @@ $( document ).ready(function() {
   };
 
   // create app instance
-  app = new Framework7(config);
+  var app = new Framework7(config);
 
   // init main view
   var mainView = app.views.create('.view-main');
@@ -217,3 +221,6 @@ $( document ).ready(function() {
     app.methods.toggleDarkTheme();
   }
 });
+
+// exports
+export {app, config};

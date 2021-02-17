@@ -1,3 +1,5 @@
+import { app } from 'init.js';
+
 $( document ).ready(function() {
   const uiWidgets = ["gauge", "swiper", "searchbar"];
   const serverWidgets = ["toast", "photoBrowser", "notification"];
